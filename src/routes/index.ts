@@ -11,7 +11,7 @@ const routes: MyRouteProps[] = [
     name: "home",
     label: "Home",
     path: "/",
-    element: Home(),
+    component: Home,
   },
 ];
 export default routes;
