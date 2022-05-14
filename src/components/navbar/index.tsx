@@ -12,6 +12,7 @@ import MenuAccount from "../../menus/MenuAccount";
 import MenuCategories from "../../menus/MenuCategories";
 import DialogSearchContext from "../dialogSearch/DialogSearchContext";
 import InputSearch from "../InputSearch";
+import HideOnScroll from "./HideOnScroll";
 import Notification from "./Notifications";
 import Title from "./Title";
 
@@ -32,31 +33,33 @@ const Navbar: FunctionComponent = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar>
-          {!isSmallWindows && <MenuCategories />}
+      <HideOnScroll>
+        <AppBar position="fixed">
+          <Toolbar>
+            {!isSmallWindows && <MenuCategories />}
 
-          <Title />
-          {!isSmallWindows && (
-            <React.Fragment>
-              <Grid container justifyContent="center">
-                <Grid item xs={8} lg={7}>
-                  <InputSearch />
+            <Title />
+            {!isSmallWindows && (
+              <React.Fragment>
+                <Grid container justifyContent="center">
+                  <Grid item xs={8} lg={7}>
+                    <InputSearch />
+                  </Grid>
                 </Grid>
-              </Grid>
                 <Notification />
                 <MenuAccount />
-            </React.Fragment>
-          )}
-          {isSmallWindows && (
-            <Grid container justifyContent="flex-end">
-              <IconButton onClick={handleOpen}>
-                <Search />
-              </IconButton>
-            </Grid>
-          )}
-        </Toolbar>
-      </AppBar>
+              </React.Fragment>
+            )}
+            {isSmallWindows && (
+              <Grid container justifyContent="flex-end">
+                <IconButton onClick={handleOpen}>
+                  <Search />
+                </IconButton>
+              </Grid>
+            )}
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
     </div>
   );
 };

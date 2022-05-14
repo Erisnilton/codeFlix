@@ -3,6 +3,9 @@ import { red } from "@material-ui/core/colors";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
 const palette: PaletteOptions = {
+  primary: {
+    main: red["500"],
+  },
   background: {
     default: "#1f1f1f",
   },
@@ -31,6 +34,13 @@ const theme = createTheme({
     MuiDialog: {
       paper: {
         backgroundColor: palette.background?.default,
+      },
+    },
+    MuiDivider: { root: { backgroundColor: palette.text?.secondary } },
+    MuiCssBaseline: {
+      "@global": {
+        "html, body, #root>div:nth:child(2)": { height: "100%" },
+        body: { overflowX: "hidden" },
       },
     },
   },

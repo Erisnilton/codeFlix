@@ -1,5 +1,6 @@
 import { RouteProps } from "react-router-dom";
 import Home from "../pages/home";
+import VideoByCategories from "../pages/VideoByCategories";
 
 export interface MyRouteProps extends RouteProps {
   name: string;
@@ -12,6 +13,14 @@ const routes: MyRouteProps[] = [
     label: "Home",
     path: "/",
     component: Home,
+    exact: true,
+  },
+  {
+    name: "video.by-category",
+    label: "Vídeos por categoria",
+    path: "/categories/:id",
+    component: VideoByCategories,
+    exact: true,
   },
 ];
 export default routes;
