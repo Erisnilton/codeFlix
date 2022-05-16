@@ -1,24 +1,49 @@
-import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  makeStyles,
+} from "@material-ui/core";
 import { AddCircleOutline, Info, PlayCircleOutline } from "@material-ui/icons";
+import useIsSmallWindows from "../../../../hooks/useIsSmallWindows";
 
 interface VideoActionsMobileProps {}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: "inherit",
+  },
+  navigationActions: {
+    color: theme.palette.text.primary,
+  },
+}));
 export const VideoActionsMobile: React.FunctionComponent<
   VideoActionsMobileProps
 > = (props) => {
-  return (
+  const classes = useStyles();
+  const isSmallWindows = useIsSmallWindows();
+  return isSmallWindows ? (
     <BottomNavigation
-      //   className={classes.bottomNavigation}
+      className={classes.root}
       showLabels
       //   value={currentRoute}
     >
-      <BottomNavigationAction label="Play" icon={<PlayCircleOutline />} />
       <BottomNavigationAction
+        className={classes.navigationActions}
+        label="Play"
+        icon={<PlayCircleOutline />}
+      />
+      <BottomNavigationAction
+        className={classes.navigationActions}
         label=" Minha Lista"
         icon={<AddCircleOutline />}
       />
-      <BottomNavigationAction label="Info" icon={<Info />} />
+      <BottomNavigationAction
+        className={classes.navigationActions}
+        label="Info"
+        icon={<Info />}
+      />
     </BottomNavigation>
-  );
+  ) : null;
 };
 
 export default VideoActionsMobile;
