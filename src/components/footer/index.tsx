@@ -17,7 +17,7 @@ const useStyle = makeStyles((theme) => ({
     bottom: 0,
     top: "auto",
     borderTop: `1px solid ${theme.palette.text.secondary}`,
-    height: "40px",
+    height:40,
   },
   bottomNavigation: {
     backgroundColor: "inherit",

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
     width: "100%",
     marginLeft: theme.spacing(1),
-    Height: "40px",
+    Height: 40,
     padding: 0,
   },
   inputRoot: {
