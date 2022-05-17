@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 import routes from "./index";
 
 const AppRouter: React.FunctionComponent = () => {
@@ -6,12 +6,12 @@ const AppRouter: React.FunctionComponent = () => {
     <Switch>
       {routes.map((route, key) => {
         return (
-          <Route
-            key={key}
-            path={route.path}
-            component={route.component}
-            exact={route.exact === true}
-          />
+            <Route
+              key={key}
+              path={route.path}
+              component={route.component}
+              exact={route.exact === true}
+            />
         );
       })}
     </Switch>

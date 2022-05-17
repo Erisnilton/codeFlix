@@ -11,7 +11,7 @@ import theme from "./theme";
 function Main() {
   const isIsmallWindws = useIsSmallWindows();
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <DialogSearchProvider>
         <Navbar />
         <AppRoute />

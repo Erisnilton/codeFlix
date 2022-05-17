@@ -1,8 +1,8 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { ReactNode, useMemo } from "react";
 import useIsSmallWindows from "../../hooks/useIsSmallWindows";
 import banner from "../../static/img/1-vid-banner-01.jpg";
-import bannerHalf from "../../static/img/1-vid-banner-half-01.jpg";
+import bannerThumb from "../../static/img/1-vid-thumb-01.jpg";
 import { Video } from "../../util/model";
 import Slider, { SliderProps } from "../slider/Slider";
 import { SliderArrow } from "../slider/SliderArrow";
@@ -38,6 +38,12 @@ export const SectionTitle: React.FunctionComponent<{ children: ReactNode }> = (
 };
 
 const useSectionSliderStyles = makeStyles((theme) => ({
+  root: {
+    margin: theme.spacing(0,3),
+    [theme.breakpoints.down(theme.breakpoints.values.mobile)]:{
+      margin: theme.spacing(0,1)
+    }
+  },
   videoThumbnailRoot: {
     marginRight: "4px",
     cursor: "pointer",
@@ -70,11 +76,13 @@ const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
     }),
     [isSmallWindows]
   );
-  const thumbnails = isSmallWindows ? bannerHalf : banner;
+  const theme = useTheme();
+  const isDown1200 = useMediaQuery(theme.breakpoints.down(1200))
+  const thumbnails = isDown1200 ? bannerThumb : banner;
   return (
     <div>
       <SectionTitle>{title}</SectionTitle>
-      <div>
+      <div className={classes.root}>
         <Slider {...sliderProps}>
           {Array.from(new Array(6).keys())
             .map(() => thumbnails)
