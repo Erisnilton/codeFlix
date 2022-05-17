@@ -4,7 +4,11 @@ import ReactSlider, { Settings } from "react-slick";
 
 const useStyles = makeStyles({
   root: {
-    overflow: 'visible',
+
+    ".slick-list" : {
+      overFlow: "visible",
+    },
+      
     "&:hover .slick-left, &:hover .slick-rigth": {
       opacity: 1,
     },
