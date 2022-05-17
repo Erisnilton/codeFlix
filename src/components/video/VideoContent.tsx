@@ -1,10 +1,10 @@
 import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
-import Title from "../../../components/video/Title";
-import useIsSmallWindows from "../../../hooks/useIsSmallWindows";
-import { BANNER_VIDEO_ACTIONS_MEDIA_QUERY } from "../../../theme";
-import { Video } from "../../../util/model";
-import BannerCategory from "./BannerCategory";
-import VideosActions from "./VideoActions";
+import useIsSmallWindows from "../../hooks/useIsSmallWindows";
+import BannerCategory from "../../pages/home/banner/BannerCategory";
+import VideosActions from "../../pages/home/banner/VideoActions";
+import { BANNER_VIDEO_ACTIONS_MEDIA_QUERY } from "../../theme";
+import { Video } from "../../util/model";
+import Title from "./Title";
 
 interface VideosContentProps {
   video: Video;

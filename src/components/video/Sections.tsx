@@ -1,4 +1,4 @@
-import SectionSlider from "../../components/video/SectionSlider";
+import SectionSlider from "./SectionSlider";
 
 
 interface SectionsProps {}

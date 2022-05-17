@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { useMemo, useState } from "react";
 import Slider, { SliderProps } from "../../../components/slider/Slider";
 import { SliderArrow } from "../../../components/slider/SliderArrow";
+import VideoContent from "../../../components/video/VideoContent";
 import VideoThumbnail from "../../../components/video/VideoThumbnail";
 import useIsSmallWindows from "../../../hooks/useIsSmallWindows";
 import banner from "../../../static/img/1-vid-banner-01.jpg";
@@ -9,7 +10,6 @@ import bannerHalf from "../../../static/img/1-vid-banner-half-01.jpg";
 import Rating from "./Rating";
 import SliderStepper from "./VideoActions/SliderStepper";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
-import VideoContent from "./VideoContent";
 
 const useStyles = makeStyles((theme) => ({
   rootImage: {
