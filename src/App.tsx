@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { DialogSearchProvider } from "./components/dialogSearch/DialogSearchProvider";
 import Footer from "./components/footer";

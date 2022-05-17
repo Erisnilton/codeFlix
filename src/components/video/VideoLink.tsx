@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         color: theme.palette.text.primary,
         marginRight: 5,
+        textDecoration: 'none',
 
         [theme.breakpoints.up("sm")] : {
             fontSize: '1.2em',

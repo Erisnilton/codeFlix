@@ -1,7 +1,7 @@
-import { makeStyles } from "@material-ui/core";
-import Category from "../../../components/video/Category";
+import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import Title from "../../../components/video/Title";
 import useIsSmallWindows from "../../../hooks/useIsSmallWindows";
+import { BANNER_VIDEO_ACTIONS_MEDIA_QUERY } from "../../../theme";
 import { Video } from "../../../util/model";
 import BannerCategory from "./BannerCategory";
 import VideosActions from "./VideoActions";
@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     marginBottom: 30,
     bottom: 0,
-    marginLeft: 4,
+    marginLeft: 30,
+
+    [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
+      marginLeft: 10,
+    },
   },
   title: {
     fontSize: "2em",
@@ -32,6 +36,8 @@ const VideoContent: React.FunctionComponent<VideosContentProps> = (props) => {
   const { video } = props;
   const classes = useStyles();
   const isSmallWindows = useIsSmallWindows();
+  const theme = useTheme();
+  const isUp700 = useMediaQuery(theme.breakpoints.up(BANNER_VIDEO_ACTIONS_MEDIA_QUERY))
   return (
     <div className={classes.root}>
       <BannerCategory>
@@ -40,7 +46,7 @@ const VideoContent: React.FunctionComponent<VideosContentProps> = (props) => {
       {!isSmallWindows && (
         <Title className={classes.title}>{video.title}</Title>
       )}
-      {!isSmallWindows && <VideosActions />}
+      {isUp700 && <VideosActions />}
     </div>
   );
 };

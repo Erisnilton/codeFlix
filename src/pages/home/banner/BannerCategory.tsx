@@ -3,7 +3,7 @@ import Category, { CategoryProps } from "../../../components/video/Category";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
       position: "absolute",
       left: 4,
       bottom: 0,

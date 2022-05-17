@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Slider, { SliderProps } from "../../../components/slider/Slider";
 import { SliderArrow } from "../../../components/slider/SliderArrow";
 import VideoThumbnail from "../../../components/video/VideoThumbnail";
@@ -7,13 +7,13 @@ import useIsSmallWindows from "../../../hooks/useIsSmallWindows";
 import banner from "../../../static/img/1-vid-banner-01.jpg";
 import bannerHalf from "../../../static/img/1-vid-banner-half-01.jpg";
 import Rating from "./Rating";
+import SliderStepper from "./VideoActions/SliderStepper";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 import VideoContent from "./VideoContent";
 
 const useStyles = makeStyles((theme) => ({
   rootImage: {
     position: "relative",
-    marginRight: "4px",
     "&:focus": {
       outlineColor: theme.palette.text.primary,
     },
@@ -56,6 +56,7 @@ const Banner: React.FunctionComponent = () => {
   const classes = useStyles();
   const classesSlider = classes.slider;
   const isSmallWindows = useIsSmallWindows();
+  const [activeIndex, setActiveIndex] = useState(0);
   const sliderProps: SliderProps = useMemo(
     () => ({
       className: classesSlider,
@@ -69,36 +70,46 @@ const Banner: React.FunctionComponent = () => {
       arrows: !isSmallWindows,
       prevArrow: <SliderArrow dir="left" />,
       nextArrow: <SliderArrow dir="right" />,
+      beforeChange: (oldIndex, nextIndex) => {
+        setActiveIndex(nextIndex);
+      },
     }),
     [isSmallWindows, classesSlider]
   );
   const thumbnails = isSmallWindows ? banner : bannerHalf;
+
   return (
     <div>
       <Slider {...sliderProps}>
         {Array.from(new Array(6).keys())
           .map(() => thumbnails)
-          .map((v) => (
-            <div>
-              <VideoThumbnail
-                key={v}
-                classes={{ root: classes.rootImage, image: classes.image }}
-                ImgProp={{ src: thumbnails }}
-              >
-                <VideoContent
-                  video={{
-                    id: "000",
-                    title: "Epitafos",
-                    categories: [
-                      { id: "111", name: "Documentários", is_active: true },
-                    ],
-                  }}
-                />
-                <Rating rating="14" />
-              </VideoThumbnail>
-            </div>
-          ))}
+          .map((v, index) => {
+            const show = index === activeIndex;
+            return (
+              <div>
+                <VideoThumbnail
+                  key={v}
+                  classes={{ root: classes.rootImage, image: classes.image }}
+                  ImgProp={{ src: thumbnails }}
+                >
+                  {show && (
+                    <VideoContent
+                      video={{
+                        id: "000",
+                        title: "Epitafios",
+                        categories: [
+                          { id: "111", name: "Documentários", is_active: true },
+                        ],
+                      }}
+                    />
+                  )}
+                  {show && <Rating rating="14" />}
+                </VideoThumbnail>
+              </div>
+            );
+          })}
       </Slider>
+      {!isSmallWindows && <SliderStepper maxSteps={6} activeStep={activeIndex} />}
       <VideoActionsMobile />
     </div>
   );
