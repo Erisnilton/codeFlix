@@ -6,7 +6,6 @@ import {
   useTheme
 } from "@material-ui/core";
 import { AddCircleOutline, Info, PlayCircleOutline } from "@material-ui/icons";
-import useIsSmallWindows from "../../../../hooks/useIsSmallWindows";
 import { BANNER_VIDEO_ACTIONS_MEDIA_QUERY } from "../../../../theme";
 
 interface VideoActionsMobileProps {}
@@ -23,7 +22,6 @@ export const VideoActionsMobile: React.FunctionComponent<
   VideoActionsMobileProps
 > = (props) => {
   const classes = useStyles();
-  const isSmallWindows = useIsSmallWindows();
   const theme = useTheme()
   const isDown700 = useMediaQuery(theme.breakpoints.down(BANNER_VIDEO_ACTIONS_MEDIA_QUERY));
   return isDown700 ? (

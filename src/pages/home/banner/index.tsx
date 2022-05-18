@@ -12,6 +12,14 @@ import SliderStepper from "./VideoActions/SliderStepper";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 
 const useStyles = makeStyles((theme) => ({
+  divSliderRoor: {   
+    [theme.breakpoints.down(400)]: {
+      height: "180px"
+  },
+    [theme.breakpoints.between(400, 700)]: {
+        height: "180px"
+    }
+  },
   rootImage: {
     position: "relative",
     "&:focus": {
@@ -40,6 +48,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   get slider() {
+   
+    
+
+    console.log(Object.fromEntries(
+      Object.entries(this.image).map((size) => [
+        size[0],
+        {
+          "& .slick-list & .slick-track": {
+            height: size[1].height,
+          },
+        },
+      ])
+    ))
     return Object.fromEntries(
       Object.entries(this.image).map((size) => [
         size[0],
@@ -79,7 +100,8 @@ const Banner: React.FunctionComponent = () => {
   const thumbnails = isSmallWindows ? banner : bannerHalf;
 
   return (
-    <div>
+    <>
+      <div className={classes.divSliderRoor}>
       <Slider {...sliderProps}>
         {Array.from(new Array(6).keys())
           .map(() => thumbnails)
@@ -109,9 +131,10 @@ const Banner: React.FunctionComponent = () => {
             );
           })}
       </Slider>
+      </div>
       {!isSmallWindows && <SliderStepper maxSteps={6} activeStep={activeIndex} />}
-      <VideoActionsMobile />
-    </div>
+       <VideoActionsMobile />
+    </>
   );
 };
 

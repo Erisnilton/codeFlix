@@ -46,7 +46,7 @@ const MenuCategories: React.FunctionComponent = () => {
               </MenuItem>
             );
           })}
-          <MenuItem component={Link} to={"/categorias/1"} onClick={handleClose}>
+          <MenuItem component={Link} to={"/categories/1"} onClick={handleClose}>
             Categorias
           </MenuItem>
         </MuiMenu>
