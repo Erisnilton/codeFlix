@@ -12,14 +12,7 @@ import SliderStepper from "./VideoActions/SliderStepper";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 
 const useStyles = makeStyles((theme) => ({
-  divSliderRoor: {   
-    [theme.breakpoints.down(400)]: {
-      height: "180px"
-  },
-    [theme.breakpoints.between(400, 700)]: {
-        height: "180px"
-    }
-  },
+  
   rootImage: {
     position: "relative",
     "&:focus": {
@@ -48,19 +41,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   get slider() {
-   
-    
-
-    console.log(Object.fromEntries(
-      Object.entries(this.image).map((size) => [
-        size[0],
-        {
-          "& .slick-list & .slick-track": {
-            height: size[1].height,
+    console.log(
+      Object.fromEntries(
+        Object.entries(this.image).map((size) => [
+          size[0],
+          {
+            "& .slick-list & .slick-track": {
+              height: size[1].height,
+            },
           },
-        },
-      ])
-    ))
+        ])
+      )
+    );
     return Object.fromEntries(
       Object.entries(this.image).map((size) => [
         size[0],
@@ -101,39 +93,43 @@ const Banner: React.FunctionComponent = () => {
 
   return (
     <>
-      <div className={classes.divSliderRoor}>
-      <Slider {...sliderProps}>
-        {Array.from(new Array(6).keys())
-          .map(() => thumbnails)
-          .map((v, index) => {
-            const show = index === activeIndex;
-            return (
-              <div>
-                <VideoThumbnail
-                  key={v}
-                  classes={{ root: classes.rootImage, image: classes.image }}
-                  ImgProp={{ src: thumbnails }}
-                >
-                  {show && (
-                    <VideoContent
-                      video={{
-                        id: "000",
-                        title: "Epitafios",
-                        categories: [
-                          { id: "111", name: "Documentários", is_active: true },
-                        ],
-                      }}
-                    />
-                  )}
-                  {show && <Rating rating="14" />}
-                </VideoThumbnail>
-              </div>
-            );
-          })}
-      </Slider>
-      </div>
-      {!isSmallWindows && <SliderStepper maxSteps={6} activeStep={activeIndex} />}
-       <VideoActionsMobile />
+        <Slider {...sliderProps}>
+          {Array.from(new Array(6).keys())
+            .map(() => thumbnails)
+            .map((v, index) => {
+              const show = index === activeIndex;
+              return (
+                <div>
+                  <VideoThumbnail
+                    key={v}
+                    classes={{ root: classes.rootImage, image: classes.image }}
+                    ImgProp={{ src: thumbnails }}
+                  >
+                    {show && (
+                      <VideoContent
+                        video={{
+                          id: "000",
+                          title: "Epitafios",
+                          categories: [
+                            {
+                              id: "111",
+                              name: "Documentários",
+                              is_active: true,
+                            },
+                          ],
+                        }}
+                      />
+                    )}
+                    {show && <Rating rating="14" />}
+                  </VideoThumbnail>
+                </div>
+              );
+            })}
+        </Slider>
+      {!isSmallWindows && (
+        <SliderStepper maxSteps={6} activeStep={activeIndex} />
+      )}
+      <VideoActionsMobile />
     </>
   );
 };

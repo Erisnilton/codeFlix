@@ -3,10 +3,6 @@ import clsx from "clsx";
 import ReactSlider, { Settings } from "react-slick";
 
 const useStyles = makeStyles({
-  div: {
-    overflow: "visible"
-  },
-
   root: {      
     "&:hover .slick-left, &:hover .slick-rigth": {
       opacity: 1,
