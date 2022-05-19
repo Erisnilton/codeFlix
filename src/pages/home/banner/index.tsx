@@ -12,11 +12,16 @@ import SliderStepper from "./VideoActions/SliderStepper";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 
 const useStyles = makeStyles((theme) => ({
+  
   rootImage: {
     width: "100%",
     position: "relative",
     "&:focus": {
       outlineColor: theme.palette.text.primary,
+    },
+    transition: "transform 0.5s",
+    "&:hover": {
+      transform: "scale(1.125)",
     },
   },
   image: {
@@ -125,7 +130,7 @@ const Banner: React.FunctionComponent = () => {
         })}
       </Slider>
       {!isSmallWindows && (
-        <SliderStepper maxSteps={6} activeStep={activeIndex} />
+        <SliderStepper maxSteps={2} activeStep={activeIndex} />
       )}
       <VideoActionsMobile />
     </div>

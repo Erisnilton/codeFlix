@@ -3,8 +3,7 @@ import clsx from "clsx";
 import ReactSlider, { Settings } from "react-slick";
 
 const useStyles = makeStyles({
-  root: {
-    overflow: 'visible',
+  root: {      
     "&:hover .slick-left, &:hover .slick-rigth": {
       opacity: 1,
     },
@@ -18,9 +17,9 @@ const Slider: React.FunctionComponent<SliderProps> = (props) => {
   const { children, ...other } = props;
   const className = clsx(classes.root, other.className)
   return (
-    <ReactSlider  { ...other } className={className}>
-      {children}
-    </ReactSlider>
+      <ReactSlider   { ...other }  className={className}>
+        {children}
+      </ReactSlider>
   );
 };
 

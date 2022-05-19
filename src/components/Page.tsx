@@ -19,7 +19,7 @@ const useStyle = makeStyles((theme) => ({
             paddingTop: props.margin === "normal" ? 64 : 80
         },
         '&::after': {
-            [theme.breakpoints.down("sm")] : {
+            [theme.breakpoints.down(theme.breakpoints.values.mobile)] : {
                 content: '""',
                 display: "block",
                 paddingTop: 100
