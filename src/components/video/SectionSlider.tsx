@@ -6,18 +6,19 @@ import Slider, { SliderProps } from "../slider/Slider";
 import { SliderArrow } from "../slider/SliderArrow";
 import Title from "../Title";
 import VideoThumbnail from "./VideoThumbnail";
-const images = import.meta.globEager('../../static/img/thumbs/*.webp')
-
+const images = import.meta.globEager("../../static/img/thumbs/*.webp");
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(0,3),
-    [theme.breakpoints.down(theme.breakpoints.values.mobile)]:{
-      margin: theme.spacing(0,1)
-    }
+    margin: theme.spacing(0, 3),
+    marginBottom: "50px",
+    [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
+      margin: theme.spacing(0, 1),
+      marginBottom: "25px",
+    },
   },
   videoThumbnailRoot: {
-    overflow: 'visible',
+    overflow: "visible",
     marginRight: "4px",
     cursor: "pointer",
     transition: "transform 0.5s",
@@ -50,7 +51,7 @@ const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
     [isSmallWindows]
   );
   const theme = useTheme();
-  const isDown1200 = useMediaQuery(theme.breakpoints.down(1200))
+  const isDown1200 = useMediaQuery(theme.breakpoints.down(1200));
   // const thumbnails = isDown1200 ? bannerThumb : banner;
   // const thumbnails = isDown1200 ? bannerThumb : banner;
   return (
@@ -58,14 +59,13 @@ const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
       <Title>{title}</Title>
       <div className={classes.root}>
         <Slider {...sliderProps}>
-          {Object.values(images)
-            .map((src, index) => (
-              <VideoThumbnail
-                key={index}
-                ImgProp={{ src : src.default}}
-                classes={{ root: classes.videoThumbnailRoot }}
-              />
-            ))}
+          {Object.values(images).map((src, index) => (
+            <VideoThumbnail
+              key={src.default}
+              ImgProp={{ src: src.default }}
+              classes={{ root: classes.videoThumbnailRoot }}
+            />
+          ))}
         </Slider>
       </div>
     </div>

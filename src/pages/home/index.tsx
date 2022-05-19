@@ -1,6 +1,6 @@
 import Page from "../../components/Page";
-import Banner from "./banner";
 import Sections from "../../components/video/Sections";
+import Banner from "./banner";
 
 const Home: React.FunctionComponent = () => {
   return (

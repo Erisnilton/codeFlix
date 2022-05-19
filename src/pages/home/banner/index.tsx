@@ -110,12 +110,13 @@ const Banner: React.FunctionComponent = () => {
           return (
             <div>
               <VideoThumbnail
-                key={index}
+                key={thumbnail.video.id}
                 classes={{ root: classes.rootImage, image: classes.image }}
                 ImgProp={{ src: thumbnail.image }}
               >
                 {show && (
                   <VideoContent
+                  key={thumbnail.video.id}
                     video={{
                       id: thumbnail.video.id,
                       title: thumbnail.video.title,
