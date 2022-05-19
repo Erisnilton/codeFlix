@@ -14,9 +14,9 @@ const UseInformation: React.FunctionComponent = () => {
   return (
     <div className={classes.root}>
       <Avatar src="" style={{ marginRight: theme.spacing(1)}}>
-        Nu
+        EF
       </Avatar>
-      <Typography noWrap={true}>Nome do Usuário</Typography>
+      <Typography noWrap={true}>Erisnilton Freitas</Typography>
     </div>
   );
 };

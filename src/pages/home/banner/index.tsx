@@ -5,7 +5,7 @@ import { SliderArrow } from "../../../components/slider/SliderArrow";
 import VideoContent from "../../../components/video/VideoContent";
 import VideoThumbnail from "../../../components/video/VideoThumbnail";
 import useIsSmallWindows from "../../../hooks/useIsSmallWindows";
-import banner from "../../../static/img/1-vid-banner-01.jpg";
+import banner from "../../../static/img/1-vid-banner-02.jpg";
 import bannerHalf from "../../../static/img/1-vid-banner-half-01.jpg";
 import Rating from "./Rating";
 import SliderStepper from "./VideoActions/SliderStepper";
@@ -13,6 +13,7 @@ import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 
 const useStyles = makeStyles((theme) => ({
   rootImage: {
+    width: "100%",
     position: "relative",
     "&:focus": {
       outlineColor: theme.palette.text.primary,
@@ -76,40 +77,56 @@ const Banner: React.FunctionComponent = () => {
     }),
     [isSmallWindows, classesSlider]
   );
-  const thumbnails = isSmallWindows ? banner : bannerHalf;
+
+  const arrayImage = [
+    {
+      image: banner,
+      video: {
+        id: "000",
+        title: "Os Vingadores",
+        categories: [{ id: "111", name: "Filmes", is_active: true }],
+      },
+    },
+    {
+      image: bannerHalf,
+      video: {
+        id: "0001",
+        title: "Epitafios",
+        categories: [{ id: "112", name: "Documentários", is_active: true }],
+      },
+    },
+  ];
 
   return (
     <div>
       <Slider {...sliderProps}>
-        {Array.from(new Array(6).keys())
-          .map(() => thumbnails)
-          .map((v, index) => {
-            const show = index === activeIndex;
-            return (
-              <div>
-                <VideoThumbnail
-                  key={v}
-                  classes={{ root: classes.rootImage, image: classes.image }}
-                  ImgProp={{ src: thumbnails }}
-                >
-                  {show && (
-                    <VideoContent
-                      video={{
-                        id: "000",
-                        title: "Epitafios",
-                        categories: [
-                          { id: "111", name: "Documentários", is_active: true },
-                        ],
-                      }}
-                    />
-                  )}
-                  {show && <Rating rating="14" />}
-                </VideoThumbnail>
-              </div>
-            );
-          })}
+        {arrayImage.map((thumbnail, index) => {
+          const show = index === activeIndex;
+          return (
+            <div>
+              <VideoThumbnail
+                key={index}
+                classes={{ root: classes.rootImage, image: classes.image }}
+                ImgProp={{ src: thumbnail.image }}
+              >
+                {show && (
+                  <VideoContent
+                    video={{
+                      id: thumbnail.video.id,
+                      title: thumbnail.video.title,
+                      categories: thumbnail.video.categories
+                    }}
+                  />
+                )}
+                {show && <Rating rating="14" />}
+              </VideoThumbnail>
+            </div>
+          );
+        })}
       </Slider>
-      {!isSmallWindows && <SliderStepper maxSteps={6} activeStep={activeIndex} />}
+      {!isSmallWindows && (
+        <SliderStepper maxSteps={6} activeStep={activeIndex} />
+      )}
       <VideoActionsMobile />
     </div>
   );

@@ -44,7 +44,10 @@ export function getImageSizes(theme: Theme) {
 }
 
 const useStyle = makeStyles((theme) => ({
-    image: getImageSizes(theme)
+    image: {
+      ...getImageSizes(theme),
+      objectFit: 'cover',
+    }
 }));
 
 const VideoThumbnail: React.FunctionComponent<VideoThumbnailProps> = (props) => {

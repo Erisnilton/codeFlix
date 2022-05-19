@@ -1,12 +1,12 @@
 import { makeStyles, Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { ReactNode, useMemo } from "react";
 import useIsSmallWindows from "../../hooks/useIsSmallWindows";
-import banner from "../../static/img/1-vid-banner-01.jpg";
-import bannerThumb from "../../static/img/1-vid-thumb-01.jpg";
 import { Video } from "../../util/model";
 import Slider, { SliderProps } from "../slider/Slider";
 import { SliderArrow } from "../slider/SliderArrow";
 import VideoThumbnail from "./VideoThumbnail";
+
+const images = import.meta.globEager('../../static/img/thumbs/*.webp')
 
 const useSectionTitleStyles = makeStyles((theme) => ({
   root: {
@@ -45,12 +45,13 @@ const useSectionSliderStyles = makeStyles((theme) => ({
     }
   },
   videoThumbnailRoot: {
+    overflow: 'visible',
     marginRight: "4px",
     cursor: "pointer",
-    transition: "transform 0.15s ease-in",
-    "&:hover": {
-      transform: "scale3d(1.5, 1.5, 2)",
-    },
+    // transition: "transform 0.5s ease-in",
+    // "&:hover": {
+    //   transform: "scale3d(1.5, 1.5, 2)",
+    // },
   },
 }));
 
@@ -78,18 +79,18 @@ const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
   );
   const theme = useTheme();
   const isDown1200 = useMediaQuery(theme.breakpoints.down(1200))
-  const thumbnails = isDown1200 ? bannerThumb : banner;
+  // const thumbnails = isDown1200 ? bannerThumb : banner;
+  // const thumbnails = isDown1200 ? bannerThumb : banner;
   return (
     <div>
       <SectionTitle>{title}</SectionTitle>
       <div className={classes.root}>
         <Slider {...sliderProps}>
-          {Array.from(new Array(6).keys())
-            .map(() => thumbnails)
-            .map((v) => (
+          {Object.values(images)
+            .map((src, index) => (
               <VideoThumbnail
-                key={v}
-                ImgProp={{ src: thumbnails }}
+                key={index}
+                ImgProp={{ src : src.default}}
                 classes={{ root: classes.videoThumbnailRoot }}
               />
             ))}
