@@ -1,31 +1,32 @@
 
 # codeflix
 
-![landpage](src/asserts/img/landpage.png)
+![landpage](src/asserts/img/codeflix.png)
 
-> SRstudio é uma landpage que foi desenvolvida para fins de aprendizado profissional usando ReactJS e CSS3 (sem uso de bibioteca).
+> Codeflix é um clone do site da Netflix que foi desenvolvida para fins de aprendizado profissional usando ReactJS.
 
 ### Porque desse projeto?
 
-A escolha de layout foi devido a complexidade de varios elementos, os quais foram criados com SVG e CSS puro.
+A escolha do projeto foi devdido a complexidade dos elementos que compõem o site da Netflix, como o carrossel, o menu, o player de vídeo, entre outros. O projeto foi desenvolvido com o intuito de aprimorar os conhecimentos em ReactJS.
 
 ### Desafio
 
-O desafio consistiu em replicar o layout através de um exemplo no Figma.
-
+O desafio consistiu em replicar o site da Netflix, utilizando ReactJS, HTML, CSS e JavaScript. O projeto foi desenvolvido durante curso de  React da Fullcycle.
 ### O que ainda falta melhorar
 
 - responsividade
+- player de vídeo
+- ajustes no carrossel
 
 ### Tecnologias
 
 - HTML
 - CSS3
-- SVG
+- JavaScript
 - ReactJS
+- Material-ui
 
 ## Links
 
-- demo: https://erisnilton.dev/srstudio/
-- github: https://github.com/erisnilton/srstudio
-- figma: https://www.figma.com/file/Nn9M5sII8qIXLqoNa7PHAO/Digital-Agency-Website-design-(Community)
+- demo: https://erisnilton.dev/codeflix/
+- github: https://github.com/erisnilton/codeflix
