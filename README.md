@@ -1,7 +1,7 @@
 
 # codeflix
 
-![landpage](src/asserts/img/codeflix.png)
+![landpage](./src/asserts/img/codeflix.gif)
 
 > Codeflix é um clone do site da Netflix que foi desenvolvida para fins de aprendizado profissional usando ReactJS.
 
